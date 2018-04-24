@@ -20,18 +20,18 @@
 
 @article{
 
- author = {Chuan Shi, Binbin Hu, Wayne Xin Zhao and Philip S. Yu.},
+> author = {Chuan Shi, Binbin Hu, Wayne Xin Zhao and Philip S. Yu.},
  
- title = {Heterogeneous Information Network Embedding for Recommendation},
+> title = {Heterogeneous Information Network Embedding for Recommendation},
  
- booktitle = {IEEE Transactions on Knowledge and Data Engineering (TKDE)},
+> booktitle = {IEEE Transactions on Knowledge and Data Engineering (TKDE)},
  
- year = {2018},
+> year = {2018},
  
- url = {https://arxiv.org/pdf/1711.10730.pdf},
+> url = {https://arxiv.org/pdf/1711.10730.pdf},
  
- publisher = {IEEE},
+> publisher = {IEEE},
  
- keywords = {Heterogeneous information network, Network embedding, Matrix factorization, Recommender system},
+> keywords = {Heterogeneous information network, Network embedding, Matrix factorization, Recommender system},
  
 }
