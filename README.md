@@ -1,14 +1,14 @@
-#(Usage):
+# Usage:
 
-1.python cut_data.py
+*1.python cut_data.py
 
-2.python metapathGeneration.py
+*2.python metapathGeneration.py
 
-3.python embeddingGeneration.py
+*3.python embeddingGeneration.py
 
-4.python HERec_sl.py / HERec_pl.py / HERec_spl.py
+*4.python HERec_sl.py / HERec_pl.py / HERec_spl.py
 
-#Requirements
+# Requirements
 
 1.numpy
 
@@ -16,7 +16,7 @@
 
 3.deepwalk (https://github.com/phanein/deepwalk)
 
-#reference
+# reference
 
 Chuan Shi, Binbin Hu, Wayne Xin Zhao and Philip S. Yu. 
 
