@@ -204,6 +204,8 @@ class HNERec:
             perror = cerror
             cerror = total_error / n
 
+            self.delta = 0.93 * self.delta
+
             if(abs(perror - cerror) < 0.0001):
                 break
             print 'step ', step, 'crror : ', sqrt(cerror)
