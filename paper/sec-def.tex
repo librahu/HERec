@@ -1,0 +1,114 @@
+\section{Preliminary \label{sec-def}}
+
+A heterogeneous information network is a special kind of information network, which either contains multiple types of objects or multiple types of links.
+\begin{myDef}
+\textbf{Heterogeneous information network}~\cite{sun2012mining}. A HIN is denoted as $\mathcal{G} = \{\mathcal{V}, \mathcal{E}\}$ consisting of a object set $\mathcal{V}$ and a link set $\mathcal{E}$. A HIN is also associated with an object type mapping function $\phi: \mathcal{V} \rightarrow \mathcal{A}$ and a link type mapping function $\psi: \mathcal{E} \rightarrow \mathcal{R}$. $\mathcal{A}$ and $\mathcal{R}$ denote the sets of predefined object and link types, where $|\mathcal{A}| + |\mathcal{R}| > 2$.
+\end{myDef}
+
+The complexity of heterogeneous information network drives us to provide the meta level ($\eg$ schema-level) description for understanding the object types and link types better in the network. Hence, the concept of network schema is proposed to describe the meta structure of a network.
+\begin{myDef}
+\textbf{Network schema}~\cite{sun2013mining,sun2009ranking}. The network schema is denoted as $\mathcal{S} = (\mathcal{A}, \mathcal{R})$. It is a meta template
+for an information network $\mathcal{G} = \{\mathcal{V}, \mathcal{E}\}$ with the object type mapping $\phi: \mathcal{V} \rightarrow \mathcal{A}$ and the link type mapping $\psi: \mathcal{E} \rightarrow \mathcal{R}$, which is a directed graph defined over object types $\mathcal{A}$, with edges as relations from $\mathcal{R}$.
+\end{myDef}
+
+\begin{exmp}
+As shown in Fig.~\ref{fig_framework}(a), we have represented the setting of movie recommender systems by HINs.
+We further present its corresponding network schema in Fig.~\ref{fig_schema}(a), consisting of multiple types of
+objects, including User ($U$), Movie ($M$), Director ($D$). There exist different types of links between objects to represent different
+relations. A user-user link indicates the friendship between two users, while a user-movie link indicates the rating relation.
+Similarly, we present the schematic network schemas for book and business recommender systems in Fig.~\ref{fig_schema}(b) and Fig.~\ref{fig_schema}(c) respectively.
+\end{exmp}
+
+In HINs, two objects can be connected via different semantic paths, which are called meta-paths.
+
+\begin{myDef}
+\textbf{Meta-path}~\cite{sun2011pathsim}. A meta-path $\rho$ is defined on a network schema $\mathcal{S} = (\mathcal{A}, \mathcal{R})$  and is denoted as a path in the form of $A_1 \xrightarrow{R_1} A_2 \xrightarrow{R_2} \cdots \xrightarrow{R_l} A_{l+1}$ (abbreviated as $A_1A_2 \cdots A_{l+1}$), which describes a composite relation $R = R_1 \circ R_2 \circ \cdots \circ R_l$ between object $A_1$ and $A_{l+1}$, where $\circ$ denotes the composition operator on relations.
+\end{myDef}
+
+\begin{exmp}
+Taking Fig.~\ref{fig_schema}(a) as an example, two objects can be connected via multiple meta-paths, $\eg$ ``User - User" ($UU$) and  ``User - Movie - User" ($UMU$). Different meta-paths usually convey different semantics. For example, the $UU$ path indicates friendship between two users, while the $UMU$ path indicates the co-watch relation between two users, \ie they have watched the same movies. As will be seen later, the detailed meta-paths used in this work is summarized in Table~\ref{tab_Data}.
+\end{exmp}
+%Taking Fig. 1(a) as an example, we construct a HIN to model the movie recommendation setting,
+% which consists of multiple types of objects (\eg User ($U$), Movie ($M$), Director ($D$)) and links (\eg social relation between users and rating relation between users and movies).
+%In this example, two objects can be connected via multiple meta-paths, \eg
+% ``User-User" ($UU$) and  ``User-Movie-User" ($UMU$).
+% Different meta-paths often convey different semantics. For example, the $UU$ path indicates friendship between two users, while
+% the $UMU$ path indicates the two users have watched the same movies. As a major technical approach, meta-path-based search and mining methods have been extensively studied in HINs %\cite{shi2017heterogeneous}.
+
+
+Recently, HIN has become a mainstream approach to model various complex interaction systems \cite{shi2017survey}. Specially, it has been adopted in recommender systems for characterizing complex and heterogenous recommendation settings.
+
+
+
+\begin{myDef}
+\textbf{HIN based recommendation}. In a recommender system, various kinds of information can be modeled by a HIN $\mathcal{G} = \{\mathcal{V}, \mathcal{E}\}$. On recommendation-oriented HINs, two kinds of entities (\ie users and items) together with the relations between them (\ie rating relation) are our focus.
+Let $\mathcal{U}\subset \mathcal{V}$
+and $\mathcal{I}\subset \mathcal{V}$ denote the sets of users and items respectively, a triplet $\langle u, i, r_{u,i}\rangle$  denotes a record that a user $u$ assigns a rating of $r_{u,i}$ to  an item $i$, and $\mathcal{R}=\{\langle u, i, r_{u,i}\rangle\}$ denotes the set of rating records.
+We have $\mathcal{U}\subset \mathcal{V}$, $\mathcal{I}\subset \mathcal{V}$ and $\mathcal{R}\subset \mathcal{E}$.
+Given the HIN $\mathcal{G} = \{\mathcal{V}, \mathcal{E}\}$, the goal is to predict the rating score $r_{u,i'}$ of $u\in \mathcal{U}$ to a non-rated item $i'\in \mathcal{I}$.
+\end{myDef}
+
+Several efforts have been made for HIN based recommendation. Most of these works mainly leverage meta-path based similarities to enhance
+the recommendation performance~\cite{yu2013collaborative,yu2014personalized,shi2015semantic,shi2016integrating}. Next, we will present a new heterogeneous network embedding based approach to this task, which is able to effectively
+exploit the information reflected in HINs. The notations we will use throughout the article are summarized in Table~\ref{tabl_notations}.
+
+\begin{table}[htbp]
+\centering
+\caption{Notations and explanations.}\label{tabl_notations}{
+\begin{tabular}{c||c}
+\hline
+{Notation} & {Explanation}\\
+\hline
+\hline
+{$\mathcal{G}$}&{heterogeneous information network}\\
+\hline
+{$\mathcal{V}$} & {object set} \\
+\hline
+{$\mathcal{E}$} & {link set} \\
+\hline
+{$\mathcal{S}$} & {network schema} \\
+\hline
+{$\mathcal{A}$} & {object type set } \\
+\hline
+{$\mathcal{R}$} & {link type set} \\
+\hline
+{$\mathcal{U}$} & {user set} \\
+\hline
+{$\mathcal{I}$} & {item set} \\
+\hline
+{$\widehat{r_{u,i}}$} & {predicted rating user $u$ gives to item $i$}\\
+\hline
+{$\bm{e}_v$} & {low-dimensional representation of node $v$} \\
+\hline
+{$\mathcal{N}_u$} & {neighborhood of node $u$} \\
+\hline
+{$\rho$} & {a meta-path} \\
+\hline
+{$\mathcal{P}$} & {meta-path set} \\
+\hline
+{$\bm{e}^{(U)}_u, \bm{e}^{(I)}_i$} & {final representations of  user $u$, item $i$}\\
+\hline
+{$d$} & {dimension of HIN embeddings} \\
+\hline
+{$D$} & {dimension of latent factors} \\
+\hline
+{$\mathbf{x}_u, \mathbf{y}_i$} & {latent factors of user $u$, item $i$} \\
+\hline
+{$\bm{{\gamma}}^{(U)}_u$, $\bm{{\gamma}}_i^{(I)}$} & {latent factors for pairing HIN embedding of user $u$, item $i$} \\
+\hline
+{$\alpha$, $\beta$} & {parameters for integrating HIN embeddings} \\
+\hline
+{$\mathbf{M}^{(l)}$} & { transformation matrix w.r.t the $l$-th mete-path} \\
+\hline
+{$\bm{b}^{(l)}$} & { bias vector w.r.t the $l$-th mete-path} \\
+\hline
+{$w^{(l)}_u$} & {preference weight of user $u$ over the $l$-th meta-path} \\
+\hline
+{$\bm{\Theta}^{(U)}$, $\bm{\Theta}^{(I)}$} & {parameters of fusion functions for users, items} \\
+\hline
+{$\lambda$} & {regularization parameter} \\
+\hline
+{$\eta$} & {learning rate} \\
+\hline
+\end{tabular}}
+\end{table}

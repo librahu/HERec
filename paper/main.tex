@@ -1,0 +1,132 @@
+%File: formatting-instruction.tex
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{cite}
+\usepackage{graphicx, wrapfig}
+\usepackage{footmisc}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{times}
+\usepackage{helvet}
+\usepackage{courier}
+\usepackage{times}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{epsfig}
+\usepackage{balance}
+\usepackage{eucal}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{diagbox}
+\usepackage{xspace}
+\usepackage{ragged2e}
+\usepackage{bbding}
+\usepackage[tight,footnotesize]{subfigure}
+%\usepackage{natbib}
+%\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+
+\newtheorem{myDef}{Definition}
+\newtheorem{exmp}{Example}
+
+%\renewcommand{\baselinestretch}{0.995}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} % Use Input in the format of Algorithm
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % Use Output in the format of Algorithm
+
+
+\newcommand{\paratitle}[1]{\vspace{1.5ex}\noindent\textbf{#1}}
+\newcommand{\ie}{\emph{i.e.,}\xspace}
+\newcommand{\aka}{\emph{a.k.a.,}\xspace}
+\newcommand{\eg}{\emph{e.g.,}\xspace}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\ignore}[1]{}
+
+%\frenchspacing
+%\setlength{\pdfpagewidth}{8.5in}
+%\setlength{\pdfpageheight}{11in}
+%\setcounter{secnumdepth}{0}
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+ \begin{document}
+
+% The file aaai.sty is the style file for AAAI Press
+% proceedings, working notes, and technical reports.
+%
+\title{Heterogeneous Information Network Embedding for Recommendation}
+\author{Chuan~Shi,~\IEEEmembership{Member,~IEEE},
+        Binbin~Hu, Wayne~Xin~Zhao~\IEEEmembership{Member,~IEEE}\\
+        and Philip~S.~Yu,~\IEEEmembership{Fellow, IEEE}
+
+        \IEEEcompsocitemizethanks{\IEEEcompsocthanksitem C. Shi and B. Hu are with the Beijing Key Lab of Intelligent Telecommunications Software and Multimedia, Beijing University of Posts and Telecommunications, China.\protect
+\IEEEcompsocthanksitem  W.X. Zhao (corresponding author) is with School of Information, Renmin University of China, China.\protect
+\IEEEcompsocthanksitem P.S. Yu is with University of Illinois at Chicago, IL, USA and Institute for Data Science, Tsinghua University, Beijing, China.\protect}}
+
+
+\IEEEtitleabstractindextext{
+\begin{abstract}
+\justifying
+%With the rapid development of web services, various kinds of auxiliary data (\aka side information) become available in recommender systems. Although auxiliary data is likely to contain %useful information for recommendation,
+%it is difficult to model and utilize these heterogeneous and complex information in recommender systems.
+Due to the flexibility in modelling data heterogeneity, heterogeneous information network (HIN) has been adopted to characterize complex and heterogeneous auxiliary data in recommender systems, called \emph{HIN based recommendation}. It is challenging to develop effective methods for HIN based recommendation in both extraction and exploitation of the information from HINs.  Most of HIN based recommendation methods rely on  path based similarity, which cannot fully mine latent structure features of users and items.
+In this paper, we propose a novel heterogeneous  network embedding based approach for HIN based recommendation, called HERec.
+To embed HINs, we design a meta-path based random walk strategy to generate meaningful node sequences for network embedding.
+The learned node embeddings are first transformed by a set of fusion functions, and subsequently integrated into an extended matrix factorization (MF) model.
+The extended MF model together with fusion functions are jointly optimized for the rating prediction task.
+Extensive experiments on three real-world datasets demonstrate the effectiveness of the HERec model. Moreover, we show the capability of the HERec model for the cold-start problem, and reveal that the transformed embedding information from HINs can improve the recommendation performance.
+%Extensive experiments on three real datasets show that HERec performs better than several competing baselines. %, especially in the cold-start scenario.
+\end{abstract}
+\begin{IEEEkeywords}
+Heterogeneous information network, Network embedding, Matrix factorization, Recommender system.
+\end{IEEEkeywords}}
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+
+\input{sec-intro}
+\input{sec-rel}
+\input{sec-def}
+\input{sec-model}
+\input{sec-exp}
+\input{sec-con}
+
+\section*{Acknowledgements}
+This work is supported in part by the National Natural Science Foundation of China (No. 61772082, 61502502, 61375058, 61320106006), the National Key Research and Development Program of China (2017YFB0803304), and the Beijing Municipal Natural Science Foundation (4182043, 4162032). This work is also supported in part by NSF through grants IIS-1526499, IIS-1763325, and CNS-1626432, and NSFC 61672313. Wayne Xin Zhao is the corresponding author. 
+
+
+%\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./image/sc.pdf}}]
+{Chuan~Shi}
+received the B.S. degree from the Jilin University in 2001, the M.S. degree from the Wuhan University in 2004, and Ph.D. degree from the ICT of Chinese Academic of Sciences in 2007. He joined the Beijing University of Posts and Telecommunications as a lecturer in 2007, and is a professor and deputy director of Beijing Key Lab of Intelligent Telecommunications Software and Multimedia at present. His research interests are in data mining, machine learning, and evolutionary computing. He has published more than 60 papers in refereed journals and conferences, such as SIGKDD, IJCAI, CIKM, IEEE TKDE, WWWJ, and ACM TIST.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./image/hbb.pdf}}]
+{Binbin~Hu}
+received the B.S. degree from Beijing University of Posts and Telecommunications in 2016. He is currently a master student in BUPT. His research interests are in data mining and machine learning.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./image/zx.pdf}}]
+{Wayne~Xin~Zhao}
+is currently an associate professor at the School of Information, Renmin University of China. He received the Ph.D. degree from Peking University in 2014. His research interests are web text mining and natural language processing. He has published 50+ papers in refereed conferences and journals such as ACL, EMNLP, COLING, CIKM, SIGIR, SIGKDD, AAAI, ACM TOIS, ACM TKDD, ACM TIST and IEEE TKDE.
+\end{IEEEbiography}
+
+\begin{IEEEbiography}
+[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{./image/psy.pdf}}]
+{Philip~S.~Yu}
+is a Distinguished Professor in Computer Science at the University of Illinois at Chicago and also holds the Wexler Chair in Information Technology. 
+%Dr. Yu spent most of his career at IBM, where he was manager of the Software Tools and Techniques group at the Watson Research Center. 
+Dr. Yu received the B.S. Degree in E.E. from National Taiwan University, the M.S. and Ph.D. degrees in E.E. from Stanford University, and the M.B.A. degree from New York University.
+His research interest is on big data, including data mining, data stream, database and privacy. He has published more than 1000 papers in refereed journals and conferences. He holds or has applied for more than 300 US patents. Dr. Yu is a Fellow of the ACM and the IEEE. Dr. Yu is the recipient of ACM SIGKDD 2016 Innovation Award for his influential research and scientific contributions on mining, fusion and anonymization of big data, the IEEE Computer Society¡¯s 2013 Technical Achievement Award for ¡°pioneering and fundamentally innovative contributions to the scalable indexing, querying, searching, mining and anonymization of big data¡±, and the Research Contributions Award from IEEE ICDM in 2003 for his pioneering contributions to the field of data mining. He also received the ICDM 2013 10-year Highest-Impact Paper Award, and the EDBT Test of Time Award (2014). He was the Editor-in-Chiefs of ACM TKDD (2011-2017) and IEEE TKDE (2001-2004). %Dr. Yu received the B.S. Degree in E.E. from National Taiwan University, the M.S. and Ph.D. degrees in E.E. from Stanford University, and the M.B.A. degree from New York University.
+\end{IEEEbiography}
+
+\end{document}
