@@ -15,8 +15,8 @@ class metapathGeneration:
         self.get_UBCaBU(ub, '../data/bca.txt', '../data/metapath/ubcabu_0.8.txt')
         self.get_UBCiBU(ub, '../data/bci.txt', '../data/metapath/ubcibu_0.8.txt')
         self.get_BUB(ub, '../data/metapath/bub_0.8.txt')
-        self.get_BCiB('../data/bci.txt', '../data/metapath/bcib.txt')
-        self.get_BCaB('../data/bca.txt', '../data/metapath/bcab.txt')
+        self.get_BCiB('../data/bci.txt', '../data/metapath/bcib_0.8.txt')
+        self.get_BCaB('../data/bca.txt', '../data/metapath/bcab_0.8.txt')
 
     def load_ub(self, ubfile):
         ub = np.zeros((self.unum, self.bnum))
