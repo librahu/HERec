@@ -11,7 +11,7 @@ metapaths = ['ubu', 'ubcabu', 'ubcibu', 'bub', 'bcab', 'bcib']
 for metapath in metapaths:
 	metapath = metapath + '_' + str(train_rate)
 	input_file = '../data/metapath/' + metapath
-	output_file = '../data/embedding/' + metapath 
+	output_file = '../data/embeddings/' + metapath 
 
 	cmd = 'deepwalk --format edgelist --input ' + input_file + ' --output ' + output_file + \
 	      ' --walk-length ' + str(walk_len) + ' --window-size ' + str(win_size) + ' --number-walks '\
