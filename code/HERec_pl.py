@@ -48,7 +48,7 @@ class HNERec:
     
         ctn = 0
         for metapath in metapaths:
-            sourcefile = '../data/embedding/' + metapath
+            sourcefile = '../data/embeddings/' + metapath
             #print sourcefile
             with open(sourcefile) as infile:
                 
