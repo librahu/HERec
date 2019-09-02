@@ -8,6 +8,7 @@
 
 * python HERec_sl.py / HERec_pl.py / HERec_spl.py
 
+(Note: HERec_sl, HERec_pl, HERec_spl mean HERec with simple linear fusion function, personalized linear fusion and non-linear fusion)
 # Requirements
 
 * numpy
