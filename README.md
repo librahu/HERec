@@ -1,3 +1,5 @@
+# HERec is also available in OpenHINE (https://github.com/BUPT-GAMMA/OpenHINE)
+
 # Usage:
 
 * python cut_data.py
